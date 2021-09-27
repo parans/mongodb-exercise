@@ -6,8 +6,12 @@ import org.apache.commons.io.FileUtils;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * Utility class to read data from a source
+ */
 public class JsonFileDataSource {
-    File fp;
+    private File fp;
+
     public JsonFileDataSource(final String fileName) {
         if(fileName == null || fileName.isBlank()) {
             throw new IllegalArgumentException("Invalid argument, filename");
@@ -15,7 +19,7 @@ public class JsonFileDataSource {
         this.fp = new File(fileName);
     }
 
-    String read() throws IOException {
+    public String read() throws IOException {
         return FileUtils.readFileToString(fp);
     }
 }

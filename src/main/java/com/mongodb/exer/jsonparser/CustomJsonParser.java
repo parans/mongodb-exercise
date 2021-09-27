@@ -9,16 +9,20 @@ import com.google.gson.reflect.TypeToken;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * JSON parser which traverses and flattens
+ * the input json object
+ */
 public class CustomJsonParser {
-    Gson gson;
-    JsonParser parser;
+    private Gson gson;
+    private JsonParser parser;
 
-    CustomJsonParser() {
+    public CustomJsonParser() {
         gson = new Gson();
         parser  = new JsonParser();
     }
 
-    Map<String, Object> traverseAndSerialize(JsonObject jsonTree) {
+    private Map<String, Object> traverseAndSerialize(JsonObject jsonTree) {
         Map<String, Object> result = new LinkedHashMap<>();
         Map<String, Object> elementMap = gson.fromJson(jsonTree, new TypeToken<Map<String, Object>>(){}.getType());
         for(String key: elementMap.keySet()) {
