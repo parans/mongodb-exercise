@@ -1,0 +1,162 @@
+{
+  "streamId": "demostream",
+  "workerId": "worker0",
+  "streamSourceConfig": {
+    "systemType": "KAFKA",
+    "connectionConfig": {
+      "systemName": "test-cluster",
+      "bootstrapServers": "sdl53252.labs.teradata.com:9092",
+      "saslMechanism": "PLAIN",
+      "securityProtocol": "SASL_PLAINTEXT",
+      "username": "alice",
+      "password": "alice_secret",
+      "extraConnectionProperties": {
+        "ssl.truststore.location": "/opt/certs/kafka.client.truststore.jks"
+      }
+    },
+    "consumerConfig": {
+      "topicName": "arrivals.topic",
+      "defaultStartOffset": "latest",
+      "partitionOffsets": [],
+      "maxBatchSize": 4096,
+      "pollTimeOutMs": 500,
+      "earliestOffsetTimestamp": "2021-03-05T16:46:35"
+    }
+  },
+  "shreddingConfig": {
+    "streamRecordParsingConfigDTO": {
+      "dataFormat": "JSON",
+      "characterEncoding": "UTF-8",
+      "csvDelimiter": ",",
+      "csvEscapeCharacter": "\"",
+      "csvQuoteCharacter": "|",
+      "rawBinaryBodyColumnName": "E_BODY",
+      "rawBinaryTimestampColumnName": "E_TIME",
+      "rawTextBodyColumnName": "E_BODY",
+      "rawTextTimestampColumnName": "E_TIME"
+    },
+    "transformationRules": [
+      {
+        "propertyPath": "/Event_Id",
+        "propertyIndex": null,
+        "targetColumn": "Event_Id",
+        "dataType": "VARCHAR",
+        "required": true,
+        "format": "",
+        "minLength": 8,
+        "maxLength": 16,
+        "minValue": null,
+        "dataTypeCode": null,
+        "precision": 0,
+        "scale": 0,
+        "maxLengthInBytes": null,
+        "characterType": null,
+        "maxValue": null
+      },
+      {
+        "propertyPath": "/Venue_Id",
+        "propertyIndex": null,
+        "targetColumn": "Venue_Id",
+        "dataType": "INTEGER",
+        "required": false,
+        "format": "",
+        "minLength": null,
+        "maxLength": null,
+        "minValue": "100",
+        "dataTypeCode": null,
+        "precision": 4,
+        "scale": 0,
+        "maxLengthInBytes": null,
+        "characterType": null,
+        "maxValue": "5000"
+      },
+      {
+        "propertyPath": "/firstname",
+        "propertyIndex": null,
+        "targetColumn": "First_Name",
+        "dataType": "VARCHAR",
+        "required": false,
+        "format": "",
+        "minLength": 1,
+        "maxLength": 32,
+        "minValue": null,
+        "dataTypeCode": null,
+        "precision": 0,
+        "scale": 0,
+        "maxLengthInBytes": null,
+        "characterType": null,
+        "maxValue": null
+      },
+      {
+        "propertyPath": "/surname",
+        "propertyIndex": null,
+        "targetColumn": "Last_Name",
+        "dataType": "VARCHAR",
+        "required": true,
+        "format": "",
+        "minLength": 1,
+        "maxLength": 32,
+        "minValue": null,
+        "dataTypeCode": null,
+        "precision": 0,
+        "scale": 0,
+        "maxLengthInBytes": null,
+        "characterType": null,
+        "maxValue": null
+      },
+      {
+        "propertyPath": "/favorite_quote",
+        "propertyIndex": null,
+        "targetColumn": "Comments",
+        "dataType": "VARCHAR",
+        "required": true,
+        "format": "",
+        "minLength": 1,
+        "maxLength": 255,
+        "minValue": null,
+        "dataTypeCode": null,
+        "precision": 0,
+        "scale": 0,
+        "maxLengthInBytes": null,
+        "characterType": null,
+        "maxValue": null
+      },
+      {
+        "propertyPath": "/floatingpoint",
+        "propertyIndex": null,
+        "targetColumn": "FloatingPoint",
+        "dataType": "DECIMAL",
+        "required": true,
+        "format": null,
+        "minLength": null,
+        "maxLength": null,
+        "minValue": null,
+        "dataTypeCode": null,
+        "precision": 4,
+        "scale": 2,
+        "maxLengthInBytes": null,
+        "characterType": null,
+        "maxValue": null
+      },
+      {
+        "propertyPath": "/nullparams",
+        "propertyIndex": null,
+        "targetColumn": "NullPrecisionScale",
+        "dataType": "DECIMAL",
+        "required": true,
+        "format": null,
+        "minLength": null,
+        "maxLength": null,
+        "minValue": null,
+        "dataTypeCode": null,
+        "precision": null,
+        "scale": null,
+        "maxLengthInBytes": null,
+        "characterType": null,
+        "maxValue": null
+      }
+    ]
+  },
+  "enableErrorRecords": true,
+  "action": "consume"
+}
