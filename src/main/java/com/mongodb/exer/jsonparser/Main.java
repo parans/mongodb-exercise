@@ -10,7 +10,6 @@ public class Main {
         JsonFileDataSource dataSource = new JsonFileDataSource(args[0]);
         CustomJsonParser cp = new CustomJsonParser();
         String data = dataSource.read();
-        System.out.println(data);
         System.out.println(cp.flatten(data));
     }
 }
